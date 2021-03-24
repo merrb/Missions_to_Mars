@@ -42,6 +42,8 @@ pic_source = []
         pic_source.apped(picture)
 
 
-mars_collection["featured_image_url"] = ""   
+mars_collection["featured_image_url"] = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg' 
+
+
 
 
