@@ -23,27 +23,28 @@ def scrape():
     browser.visit(url)
     time.sleep(1)
 
-html = browser.html
-soup = beautifulsoup(html, 'html.parser')
+    html = browser.html
+    soup = beautifulsoup(html, 'html.parser')
 
-mars_collection["news_title"] = soup.find('div', class_="content_title").get_text()
-mars_collection["news_snip"] = soup.find('div', class_="rollover_description_inner").get_text()
+    mars_collection["news_title"] = soup.find('div', class_="content_title").get_text()
+    mars_collection["news_snip"] = soup.find('div', class_="rollover_description_inner").get_text()
 
-#mars images
-url_feature_image = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
-browser.visit(url_feature_image)
-response = browser.html
-soup2 = beautifulsoup(response, 'html.parser')
-images = soup2.find_all('a', class_="fancybox")
-pic_source = []
+    #mars images
+    url_feature_image = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
+    browser.visit(url_feature_image)
+    response = browser.html
+    soup2 = beautifulsoup(response, 'html.parser')
+    images = soup2.find_all('a', class_="fancybox")
+    pic_source = []
 
     for image in images:
         picture = image['data-fancybox-href']
         pic_source.apped(picture)
 
 
-mars_collection["featured_image_url"] = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg' 
+    mars_collection["featured_image_url"] = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg' 
 
+    print(mars_collection)
+    return mars_collection
 
-
-
+scrape()
