@@ -1,21 +1,22 @@
-import splinter import Browser
-import beautifulsoup
+from splinter import Browser
+from bs4 import BeautifulSoup
 import pandas as pd 
 import requests
 import time
 import pymongo
 import json
 import numpy as np
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def init_browser():
     #splinter
-    executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    return browers('chrome', **executable_path, headless=False)
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    return Browser('chrome', **executable_path, headless=False)
 
 def scrape():
     #mars news titles
-    browser = init_browser
+    browser = init_browser()
     mars_collection = {}
 
     #Database Setup
@@ -24,7 +25,7 @@ def scrape():
     time.sleep(1)
 
     html = browser.html
-    soup = beautifulsoup(html, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
 
     mars_collection["news_title"] = soup.find('div', class_="content_title").get_text()
     mars_collection["news_snip"] = soup.find('div', class_="rollover_description_inner").get_text()
@@ -33,7 +34,7 @@ def scrape():
     url_feature_image = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
     browser.visit(url_feature_image)
     response = browser.html
-    soup2 = beautifulsoup(response, 'html.parser')
+    soup2 = BeautifulSoup(response, 'html.parser')
     images = soup2.find_all('a', class_="fancybox")
     pic_source = []
 
