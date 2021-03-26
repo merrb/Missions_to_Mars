@@ -45,7 +45,8 @@ def scrape():
 
     mars_collection["featured_image_url"] = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/image/featured/mars2.jpg' 
 
-    print(mars_collection)
+    #print(mars_collection)
     return mars_collection
 
-scrape()
+#scrape()
+
