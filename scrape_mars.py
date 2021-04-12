@@ -48,5 +48,6 @@ def scrape():
     #print(mars_collection)
     return mars_collection
 
-#scrape()
 
+#mars=scrape()
+# print(mars)
