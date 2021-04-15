@@ -25,7 +25,7 @@
 <div class="container-fluid">
     <div class="row" style="background-color: #FFDDCD;">
     
-    <div class= "col-md-6" style="padding": 5%;">
+    <div class= "col-md-6" style="padding: 5%;">
         <h2>Latest Mars News:</h2>
         <h3>{{mars.news_title }}</h3>
         <p>{{mars.news_paragraph }}</p>
@@ -37,15 +37,15 @@
 </div>
 
 <!--Mars Weather and Images-->
-<div class+"container-fluid">
-    <div class="row" style=background-color: #663926; color:white;">
+<div class="container-fluid">
+    <div class="row" style="background-color: #663926; color:white;">
     <div class="col-md-6" style="padding: 0%;">
         <img src="{{mars.featured_image}}" class="img-fluid" style="max-width: 100%; height: 400px;">
 </div>
 
 <div class="col-md-6" style="padding: 2%;">
     <h2>Current Weather on Mars:</h2>
-    <p>{{mars.weather}}</p>
+    <p>{{mars.mars_weather}}</p>
 </div>
 
 
@@ -54,11 +54,11 @@
     <div class="row" style="background-color:#FF9D6F;">
         <div class="col-md-6" style="padding-left: 3%;">
             <h2>Mars Facts</h2>
-            <p>{{mars.mars_facts|safe}}</p>
+            <p>{{mars.mars_facts}}</p>
         </div>
 
         <div class="col-md-6 text-center">
-            <img src"../static/mars.png" style="width: 400px; height 400px;">
+            <img src="../static/mars.png" style="width: 400px; height: 400px;">
         </div>
     </div>
 </div>
@@ -79,6 +79,7 @@
 
     </div>
     </div>
+    {% endfor %}
 </div>
 
 

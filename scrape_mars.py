@@ -25,10 +25,17 @@ def scrape():
     time.sleep(1)
 
     html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, "html.parser")
 
     mars_collection["news_title"] = soup.find('div', class_="content_title").get_text()
     mars_collection["news_snip"] = soup.find('div', class_="rollover_description_inner").get_text()
+    mars_collection["news_paragraph"] = soup.find('div', class_="article_teaser_body").get_text()
+    #mars_collection["mars_facts"] = soup.find('div', class_="mars_facts").get_text()
+    #mars_collection["mars_weather"] = soup.find('div', class_="weather").get_text()
+
+    #p_results = soup.find_all('div', class_='article_teaser_body' )
+    #news_p = p_results[0].text
+
 
     #mars images
     url_feature_image = "https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html"
@@ -49,5 +56,5 @@ def scrape():
     return mars_collection
 
 
-#mars=scrape()
-# print(mars)
+mars=scrape()
+print(mars)

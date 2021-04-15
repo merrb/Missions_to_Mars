@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 @app.route("/")
 def home(): 
     mars = mongo.db.mars.find_one()
-
+    print(mars)
 #Return template     
     #return "homepage"
     return render_template("index.html", mars=mars)
